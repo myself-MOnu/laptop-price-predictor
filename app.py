@@ -78,18 +78,18 @@ if st.button('Predict Price'):
 
 
 
-   st.write("Input sent to model:")
-   st.write(query)
+    st.write("Input sent to model:")
+    st.write(query)
 
-  st.write("XGBoost version:", xgb.__version__)
-  st.write("Scikit-learn version:", sklearn.__version__)
-  st.write("NumPy version:", np.__version__)
+    st.write("XGBoost version:", xgb.__version__)
+    st.write("Scikit-learn version:", sklearn.__version__)
+    st.write("NumPy version:", np.__version__)
 
-  prediction = pipe.predict(query)[0]
-  st.write("Raw model prediction:", float(prediction))
+    prediction = pipe.predict(query)[0]
+    st.write("Raw model prediction:", float(prediction))
 
-  price = int(np.exp(prediction))
-  st.write("Predicted price:", price)
+    price = int(np.exp(prediction))
+    st.write("Predicted price:", price)
 
     
     prediction = pipe.predict(query)[0]
@@ -98,6 +98,9 @@ if st.button('Predict Price'):
         "The predicted price of this configuration is "
         + str(int(np.exp(prediction)))
     )
+
+
+
 
 
 
