@@ -59,6 +59,31 @@ if st.button('Predict Price'):
     X_res = int(resolution.split('x')[0])
     Y_res = int(resolution.split('x')[1])
     ppi = ((X_res**2) + (Y_res**2))**0.5/screen_size
+    query = pd.DataFrame([{
+        'Company': company,
+        'TypeName': type,
+        'Ram': int(ram),
+        'Weight': float(weight),
+        'Touchscreen': int(touchscreen),
+        'Ips': int(ips),
+        'ppi': float(ppi),
+        'Cpu brand': cpu,
+        'HDD': int(hdd),
+        'SSD': int(ssd),
+        'Gpu brand': gpu,
+        'os': os
+    }])
+
+    prediction = pipe.predict(query)[0]
+
+    st.title(
+        "The predicted price of this configuration is "
+        + str(int(np.exp(prediction)))
+    )
+
+
+
+    
     query = np.array([company,type,ram,weight,touchscreen,ips,ppi,cpu,hdd,ssd,gpu,os])
 
     query = query.reshape(1,12)
